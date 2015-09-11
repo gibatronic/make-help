@@ -1,0 +1,8 @@
+---
+install: git clone https://github.com/sstephenson/bats.git
+language: c
+notifications:
+  email:
+    on_failure: always
+    on_success: never
+script: bats/bin/bats --tap test/shell-colors
