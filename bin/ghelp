@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+MAKEFILE=
+OPTIONS=("$@")
+LENGTH=${#OPTIONS[@]}
+PAD='0'
+
+error() {
+  echo -e "$1" 1>&2
+  return 1
+}
+
+get_library_path() {
+  BIN_PATH=$([ -h "$0" ] && resolve_link "$0" || resolve_path "$0")
+  echo "$(resolve_path "${BIN_PATH}/../lib/.")"
+}
+
+get_makefile_path() {
+  echo "$(resolve_path "$1")/$(basename "$1")"
+}
+
+parse() {
+  DATA=$(awk -f "$(get_library_path)/commented-targets.awk" "${MAKEFILE}")
+  BLOCKS=$(echo "${DATA}" | cut -d ' ' -f 2- | sort -n)
+  LONGEST_COMMAND_LENGTH=$(echo "${DATA}" | sort -n | tail -n 1 | cut -d ' ' -f 1)
+  IFS=$'\n'
+
+  for BLOCK in ${BLOCKS}; do
+    COMMAND=$(echo "${BLOCK}" | cut -d ' ' -f 1)
+    COMMAND_LENGTH=$(echo "${COMMAND}" | wc -m | tr -d ' ')
+    COMMENT=$(echo "${BLOCK}" | cut -d ' ' -f 2-)
+    PAD1=$(printf '%*s' $PAD)
+    PAD2_LENGTH=$((LONGEST_COMMAND_LENGTH - COMMAND_LENGTH + 3))
+    PAD2=$(printf '%*s' $PAD2_LENGTH)
+
+    printf '%s%s%s%s\n' "${PAD1}" "${COMMAND}" "${PAD2}" "${COMMENT}"
+  done
+}
+
+resolve_link() {
+  resolve_path "$(readlink "$1")"
+}
+
+resolve_path() {
+  echo "$(cd "$(dirname "$1")"; pwd -P)"
+}
+
+usage() {
+  echo ''
+  echo '  Usage:'
+  echo '    ghelp [options] <makefile>'
+  echo ''
+  echo '  Options:'
+  echo '    -p --pad  the number of spaces to prefix each line'
+  echo ''
+}
+
+if [ $LENGTH = 0 ]; then
+  usage
+  exit 1
+fi
+
+while (("$#")); do
+  OPTION=${OPTIONS[$LENGTH - $#]}
+
+  case "$OPTION" in
+    -p|--pad)
+      shift
+      PAD=${OPTIONS[$LENGTH - $#]}
+      ;;
+    --pad=*)
+      PAD=${OPTION#*=}
+      ;;
+    *)
+      MAKEFILE="$(get_makefile_path "${OPTION}")"
+  esac
+
+  shift
+done
+
+if [ -z "${MAKEFILE}" ]; then
+  usage
+  exit 1
+fi
+
+if [ ! -r "${MAKEFILE}" ]; then
+  $(error "Could not read the given makefile:\n${MAKEFILE}")
+  exit 1
+fi
+
+parse && exit 0 || exit 1
