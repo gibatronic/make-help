@@ -1,0 +1,11 @@
+# task a
+a:
+  echo task a
+
+# task c
+c:
+  echo task c
+
+# task b
+b:
+  echo task b

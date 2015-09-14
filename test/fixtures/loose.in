@@ -1,0 +1,15 @@
+# generate build
+build: scripts styles
+
+# generate scripts
+scripts:
+  echo scripts
+
+# generate styles
+styles:
+  echo styles
+
+# loose comment
+
+uncommented_target:
+  echo uncommented target

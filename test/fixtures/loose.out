@@ -1,0 +1,3 @@
+build    generate build
+scripts  generate scripts
+styles   generate styles
