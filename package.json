@@ -1,0 +1,22 @@
+{
+  "author": {
+    "email": "gibatronic@gmail.com",
+    "name": "Gibran Malheiros",
+    "url": "http://gibatronic.github.io/"
+  },
+  "bin": "bin/ghelp",
+  "bugs": {
+    "email": "gibatronic@gmail.com",
+    "url": "https://github.com/gibatronic/ghelp/issues"
+  },
+  "description": "Using make as a task runner? Then document your tasks with ghelp!",
+  "homepage": "https://github.com/gibatronic/ghelp",
+  "keywords": ["help", "make", "makefile", "task", "tasks", "usage"],
+  "license": "MIT",
+  "name": "ghelp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gibatronic/ghelp.git"
+  },
+  "version": "0.0.0"
+}
