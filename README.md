@@ -1,4 +1,4 @@
-# ghelp
+# ghelp [![Build Status](https://travis-ci.org/gibatronic/ghelp.svg?branch=master)](https://travis-ci.org/gibatronic/ghelp)
 
 This is a [basher](https://github.com/basherpm/basher) and [npm](https://www.npmjs.com/) package to help you document your make tasks.
 
