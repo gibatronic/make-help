@@ -39,7 +39,7 @@ help:
 	echo '    make <target>'
 	echo ''
 	echo '  Targets:'
-	ghelp -p 4 "$(abspath $(lastword $(MAKEFILE_LIST)))"
+	ghelp -p 4 "$(lastword $(MAKEFILE_LIST))"
 	echo ''
 ```
 
