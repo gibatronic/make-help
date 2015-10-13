@@ -12,7 +12,7 @@ help:
 	echo '    make <target>'
 	echo ''
 	echo '  Targets:'
-	bin/ghelp -p 4 $(lastword $(MAKEFILE_LIST))
+	bin/make-help -p 4 $(lastword $(MAKEFILE_LIST))
 	echo ''
 
 # grab dependencies
@@ -21,4 +21,4 @@ install:
 
 # run the program's tests
 test:
-	test/ghelp
+	test/make-help

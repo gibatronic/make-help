@@ -1,4 +1,4 @@
-# ghelp [![Build Status](https://travis-ci.org/gibatronic/ghelp.svg?branch=master)](https://travis-ci.org/gibatronic/ghelp)
+# make-help [![Build Status](https://travis-ci.org/gibatronic/make-help.svg?branch=master)](https://travis-ci.org/gibatronic/make-help)
 
 This is a [basher](https://github.com/basherpm/basher) and [npm](https://www.npmjs.com/) package to help you document your make tasks.
 
@@ -8,10 +8,10 @@ Install this package with one of the following commands:
 
 ```shell
 # through basher
-basher install gibatronic/ghelp
+basher install gibatronic/make-help
 
 # or through npm
-npm install ghelp --global
+npm install make-help --global
 ```
 
 Then comment the targets you wish to document in your `makefile`, for example:
@@ -39,7 +39,7 @@ help:
 	echo '    make <target>'
 	echo ''
 	echo '  Targets:'
-	ghelp -p 4 "$(lastword $(MAKEFILE_LIST))"
+	make-help -p 4 "$(lastword $(MAKEFILE_LIST))"
 	echo ''
 ```
 

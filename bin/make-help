@@ -48,7 +48,7 @@ resolve_path() {
 usage() {
   echo ''
   echo '  Usage:'
-  echo '    ghelp [options] <makefile>'
+  echo '    make-help [options] <makefile>'
   echo ''
   echo '  Options:'
   echo '    -p --pad  the number of spaces to prefix each line'

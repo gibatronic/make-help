@@ -1,0 +1,31 @@
+#!/usr/bin/env bats
+
+@test 'should parse the simple fixture' {
+  local MAKE_HELP_OUTPUT=$(bin/make-help test/fixtures/simple.in)
+  echo "${MAKE_HELP_OUTPUT}" | diff - test/fixtures/simple.out
+}
+
+@test 'should sort the tasks in the unsorted fixture' {
+  local MAKE_HELP_OUTPUT=$(bin/make-help test/fixtures/unsorted.in)
+  echo "${MAKE_HELP_OUTPUT}" | diff - test/fixtures/unsorted.out
+}
+
+@test 'should pad the output with -p 2' {
+  local MAKE_HELP_OUTPUT=$(bin/make-help -p 2 test/fixtures/pad.in)
+  echo "${MAKE_HELP_OUTPUT}" | diff - test/fixtures/pad.out
+}
+
+@test 'should pad the output with --pad 2' {
+  local MAKE_HELP_OUTPUT=$(bin/make-help --pad 2 test/fixtures/pad.in)
+  echo "${MAKE_HELP_OUTPUT}" | diff - test/fixtures/pad.out
+}
+
+@test 'should pad the output with --pad=2' {
+  local MAKE_HELP_OUTPUT=$(bin/make-help --pad=2 test/fixtures/pad.in)
+  echo "${MAKE_HELP_OUTPUT}" | diff - test/fixtures/pad.out
+}
+
+@test 'should ignore loose comments and targets' {
+  local MAKE_HELP_OUTPUT=$(bin/make-help test/fixtures/loose.in)
+  echo "${MAKE_HELP_OUTPUT}" | diff - test/fixtures/loose.out
+}
