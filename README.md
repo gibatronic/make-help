@@ -63,5 +63,5 @@ And voilà! Run `make help` to get a nice usage message:
 Tell make to use `help` as the default goal when no targets are provided, put the following line at the top of your `makefile`:
 
 ```Makefile
-.DEFAULT_GOAL:=help
+.DEFAULT_GOAL := help
 ```
