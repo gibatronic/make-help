@@ -11,12 +11,17 @@ error() {
 }
 
 get_library_path() {
-  BIN_PATH=$([ -h "$0" ] && resolve_link "$0" || resolve_path "$0")
-  echo "$(resolve_path "${BIN_PATH}/../lib/.")"
-}
+  local SELF_PATH=$0
 
-get_makefile_path() {
-  echo "$(resolve_path "$1")/$(basename "$1")"
+  if [ -h "$SELF_PATH" ]; then
+    local BIN_PATH=$(cd "$(dirname "$SELF_PATH")"; cd "$(dirname "$(readlink $SELF_PATH)")"; pwd -P)
+  else
+    local BIN_PATH=$(cd "$(dirname "$SELF_PATH")"; pwd -P)
+  fi
+
+  LIB_PATH=$(cd "$BIN_PATH"; cd ../lib; pwd -P)
+
+  echo $LIB_PATH
 }
 
 parse() {
@@ -35,14 +40,6 @@ parse() {
 
     printf '%s%s%s%s\n' "${PAD1}" "${COMMAND}" "${PAD2}" "${COMMENT}"
   done
-}
-
-resolve_link() {
-  resolve_path "$(readlink "$1")"
-}
-
-resolve_path() {
-  echo "$(cd "$(dirname "$1")"; pwd -P)"
 }
 
 usage() {
@@ -72,7 +69,7 @@ while (("$#")); do
       PAD=${OPTION#*=}
       ;;
     *)
-      MAKEFILE="$(get_makefile_path "${OPTION}")"
+      MAKEFILE=$OPTION
   esac
 
   shift
