@@ -65,3 +65,7 @@ Tell make to use `help` as the default goal when no targets are provided, put th
 ```Makefile
 .DEFAULT_GOAL := help
 ```
+
+## System
+
+This project only runs on Unix systems and depends on [AWK](https://en.wikipedia.org/wiki/AWK).
