@@ -14,7 +14,7 @@ basher install gibatronic/make-help
 npm install make-help --global
 ```
 
-Then comment the targets you wish to document in your `makefile`, for example:
+Then document the targets with a comment in your `makefile`, like so:
 
 ```Makefile
 # generate all assets
