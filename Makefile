@@ -1,6 +1,7 @@
 .DEFAULT_GOAL:=help
 
-.PHONY: install \
+.PHONY: help \
+				install \
 				test
 
 .SILENT:
