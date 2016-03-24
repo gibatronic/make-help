@@ -5,4 +5,10 @@ notifications:
   email:
     on_failure: always
     on_success: never
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/15b50a2c52220fe0ae53
+    on_success: change
+    on_failure: always
+    on_start: never
 script: bats/bin/bats --tap test/make-help
