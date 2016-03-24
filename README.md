@@ -1,4 +1,4 @@
-# make-help [![Build Status](https://travis-ci.org/gibatronic/make-help.svg?branch=master)](https://travis-ci.org/gibatronic/make-help)
+# make-help [![Build Status](https://travis-ci.org/gibatronic/make-help.svg?branch=master)](https://travis-ci.org/gibatronic/make-help) [![Gitter](https://badges.gitter.im/gibatronic/make-help.svg)](https://gitter.im/gibatronic/make-help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 This is a [basher](https://github.com/basherpm/basher) and [npm](https://www.npmjs.com/) package to help you document your make tasks.
 
