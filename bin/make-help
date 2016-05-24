@@ -14,7 +14,8 @@ get_library_path() {
   local SELF_PATH=$0
 
   if [ -h "$SELF_PATH" ]; then
-    local BIN_PATH=$(cd "$(dirname "$SELF_PATH")"; cd "$(dirname "$(readlink $SELF_PATH)")"; pwd -P)
+    local LINK_PATH=$(readlink $SELF_PATH)
+    local BIN_PATH=$(cd "$(dirname "$SELF_PATH")"; cd "$(dirname "$LINK_PATH")"; pwd -P)
   else
     local BIN_PATH=$(cd "$(dirname "$SELF_PATH")"; pwd -P)
   fi
