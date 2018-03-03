@@ -1,20 +1,16 @@
 # make-help [![Build Status](https://travis-ci.org/gibatronic/make-help.svg?branch=master)](https://travis-ci.org/gibatronic/make-help) [![Gitter](https://badges.gitter.im/gibatronic/make-help.svg)](https://gitter.im/gibatronic/make-help?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-This is a [basher](https://github.com/basherpm/basher) and [npm](https://www.npmjs.com/) package to help you document your make tasks.
+This is a [npm](https://www.npmjs.com/make-help) package to help you document your make tasks.
 
 ## Usage
 
-Install this package with one of the following commands:
+Install the package with the following command:
 
-```shell
-# through basher
-basher install gibatronic/make-help
-
-# or through npm
-npm install make-help --global
+```bash
+npm install make-help
 ```
 
-Then document the targets with a comment in your `makefile`, like so:
+Then document the targets with a comment in your `Makefile`, like so:
 
 ```Makefile
 # generate all assets
@@ -39,7 +35,7 @@ help:
 	echo '    make <target>'
 	echo ''
 	echo '  Targets:'
-	make-help -p 4 "$(lastword $(MAKEFILE_LIST))"
+	npx make-help -p 4 Makefile
 	echo ''
 ```
 
