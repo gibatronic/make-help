@@ -13,7 +13,7 @@ help:
 	echo '    make <target>'
 	echo ''
 	echo '  Targets:'
-	bin/make-help -p 4 $(lastword $(MAKEFILE_LIST))
+	bin/make-help -p 4 Makefile
 	echo ''
 
 # grab dependencies
